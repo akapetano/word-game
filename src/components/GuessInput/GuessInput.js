@@ -1,14 +1,25 @@
 import React from "react";
 
-function GuessInput({ guess, setGuess, answer }) {
+function GuessInput({ guess, setGuess, setGuessResults, answer }) {
   function handleSubmit(event) {
     event.preventDefault();
     if (guess.length === 5 && guess === answer) {
+      setGuessResults((prevState) => {
+        const nextGuessResult = [...prevState, guess];
+        return nextGuessResult;
+      });
       console.log({ guess: guess });
       alert("You win!");
       setGuess("");
+      setGuessResults([]);
+    } else if (guess.length === 5 && guess !== answer) {
+      setGuessResults((prevState) => {
+        const nextGuessResult = [...prevState, guess];
+        return nextGuessResult;
+      });
+    } else {
+      alert("Word must have more than 5 letters.");
     }
-    alert("Word must have more than 5 letters.");
   }
 
   return (

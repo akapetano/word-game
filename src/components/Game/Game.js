@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import { sample } from '../../utils';
-import { WORDS } from '../../data';
+import { sample } from "../../utils";
+import { WORDS } from "../../data";
+import GuessInput from "../GuessInput/GuessInput";
+import useGuess from "../../hooks/useGuess";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -9,7 +11,13 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  return <>Put a game here!</>;
+  const { guess, setGuess } = useGuess();
+
+  return (
+    <>
+      <GuessInput guess={guess} setGuess={setGuess} answer={answer} />
+    </>
+  );
 }
 
 export default Game;

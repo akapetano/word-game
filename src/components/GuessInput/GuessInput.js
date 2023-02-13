@@ -18,7 +18,7 @@ function GuessInput({ guess, setGuess, setGuessResults, answer }) {
         return nextGuessResult;
       });
     } else {
-      alert("Word must have more than 5 letters.");
+      alert("Your guess must be a 5-letter word.");
     }
   }
 

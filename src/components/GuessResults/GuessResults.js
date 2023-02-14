@@ -5,7 +5,9 @@ function GuessResults({ guessResults }) {
     <div className="guess-results">
       {guessResults.map((guessResult) => (
         <p key={crypto.randomUUID()} className="guess">
-          {guessResult}
+          {guessResult.split("").map((letter) => (
+            <span class="cell">{letter}</span>
+          ))}
         </p>
       ))}
     </div>

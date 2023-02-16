@@ -1,6 +1,13 @@
 import React from "react";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
-function GuessInput({ guess, setGuess, setGuessResults, answer }) {
+function GuessInput({
+  guess,
+  setGuess,
+  setGuessResults,
+  setNumberOfGuesses,
+  answer,
+}) {
   function handleSubmit(event) {
     event.preventDefault();
     if (guess.length === 5 && guess === answer) {
@@ -12,10 +19,14 @@ function GuessInput({ guess, setGuess, setGuessResults, answer }) {
       alert("You win!");
       setGuess("");
       setGuessResults([]);
+      setNumberOfGuesses(NUM_OF_GUESSES_ALLOWED);
     } else if (guess.length === 5 && guess !== answer) {
       setGuessResults((prevState) => {
         const nextGuessResult = [...prevState, guess];
         return nextGuessResult;
+      });
+      setNumberOfGuesses((prevState) => {
+        return prevState - 1;
       });
     } else {
       alert("Your guess must be a 5-letter word.");

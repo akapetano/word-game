@@ -12,15 +12,24 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  const { guess, setGuess, guessResults, setGuessResults } = useGuess();
+  const {
+    guess,
+    setGuess,
+    guessResults,
+    setGuessResults,
+    setNumberOfGuesses,
+    numberOfGuesses,
+  } = useGuess();
+  console.info("NumberOfGuesses:", numberOfGuesses);
 
   return (
     <>
-      <GuessResults guessResults={guessResults} />
+      <GuessResults guessResults={guessResults} answer={answer} />
       <GuessInput
         guess={guess}
         setGuess={setGuess}
         setGuessResults={setGuessResults}
+        setNumberOfGuesses={setNumberOfGuesses}
         answer={answer}
       />
     </>

@@ -5,6 +5,8 @@ import { WORDS } from "../../data";
 import useGuess from "../../hooks/useGuess";
 import GuessInput from "../GuessInput/GuessInput";
 import GuessResults from "../GuessResults/GuessResults";
+import { useGame } from "../../hooks/useGame";
+import EndGameBanner from "../EndGameBanner/EndGameBanner";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -19,19 +21,44 @@ function Game() {
     setGuessResults,
     setNumberOfGuesses,
     numberOfGuesses,
+    checkGuess,
   } = useGuess();
-  console.info("NumberOfGuesses:", numberOfGuesses);
+  const {
+    gameHasEnded,
+    setGameHasEnded,
+    playerHasWon,
+    setPlayerHasWon,
+    resetGame,
+  } = useGame();
 
   return (
     <>
-      <GuessResults guessResults={guessResults} answer={answer} />
+      <GuessResults
+        guessResults={guessResults}
+        answer={answer}
+        checkGuess={checkGuess}
+      />
       <GuessInput
         guess={guess}
         setGuess={setGuess}
         setGuessResults={setGuessResults}
+        numberOfGuesses={numberOfGuesses}
         setNumberOfGuesses={setNumberOfGuesses}
         answer={answer}
+        checkGuess={checkGuess}
+        gameHasEnded={gameHasEnded}
+        setGameHasEnded={setGameHasEnded}
+        setPlayerHasWon={setPlayerHasWon}
+        resetGame={resetGame}
       />
+      {gameHasEnded ? (
+        <EndGameBanner
+          playerHasWon={playerHasWon}
+          numberOfGuesses={numberOfGuesses}
+          gameHasEnded={gameHasEnded}
+          answer={answer}
+        />
+      ) : null}
     </>
   );
 }

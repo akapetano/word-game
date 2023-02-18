@@ -1,33 +1,44 @@
 import React from "react";
-import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
 function GuessInput({
   guess,
   setGuess,
   setGuessResults,
+  numberOfGuesses,
   setNumberOfGuesses,
   answer,
+  checkGuess,
+  gameHasEnded,
+  setGameHasEnded,
+  setPlayerHasWon,
+  resetGame,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
     if (guess.length === 5 && guess === answer) {
       setGuessResults((prevState) => {
-        const nextGuessResult = [...prevState, guess];
+        const nextGuessResult = [...prevState, checkGuess(guess, answer)];
         return nextGuessResult;
       });
-      console.log({ guess: guess });
-      alert("You win!");
-      setGuess("");
-      setGuessResults([]);
-      setNumberOfGuesses(NUM_OF_GUESSES_ALLOWED);
+      setGameHasEnded(true);
+      setPlayerHasWon(true);
+      resetGame();
     } else if (guess.length === 5 && guess !== answer) {
       setGuessResults((prevState) => {
-        const nextGuessResult = [...prevState, guess];
+        const nextGuessResult = [...prevState, checkGuess(guess, answer)];
         return nextGuessResult;
       });
-      setNumberOfGuesses((prevState) => {
-        return prevState - 1;
-      });
+      if (numberOfGuesses >= 2) {
+        setNumberOfGuesses((prevState) => {
+          const nextNumberOfGuesses = prevState - 1;
+          return nextNumberOfGuesses;
+        });
+      } else {
+        setGameHasEnded(true);
+        setPlayerHasWon(false);
+        resetGame();
+      }
+      console.log(guess);
     } else {
       alert("Your guess must be a 5-letter word.");
     }
@@ -43,6 +54,7 @@ function GuessInput({
         onChange={(event) => setGuess(event.target.value.toUpperCase())}
         min={5}
         max={5}
+        disabled={gameHasEnded}
       />
     </form>
   );

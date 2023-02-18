@@ -8,7 +8,9 @@ html {
   --header-height: 4rem;
 
   --color-success: hsl(150deg 70% 30%);
+  --color-success-dark: hsl(150deg, 70%, 20%);
   --color-warning: hsl(50deg 100% 30%);
+  --color-warning-dark: hsl(50deg 100% 20%);
   --color-error: hsl(0deg 70% 45%);
   --color-gray-100: hsl(0deg 0% 10%);
   --color-gray-300: hsl(0deg 0% 25%);
@@ -229,4 +231,77 @@ h1 {
   to {
     transform: translateY(0%);
   }
+}
+
+.keyboard {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.keyboard-key {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  color: var(--color-gray-100);
+  color: var(--color-gray-100);
+  background-color: var(--color-gray-900);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in;
+}
+
+.keyboard-key:hover {
+  background-color: var(--color-gray-700);
+  transition: background-color 0.2s ease;
+}
+
+.keyboard-key.correct {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
+}
+
+.keyboard-key.correct:hover {
+  background: var(--color-success-dark);
+  border-color: var(--color-success-dark);
+  color: white;
+}
+
+.keyboard-key.incorrect {
+  background: var(--color-gray-300);
+  border-color: var(--color-gray-300);
+  color: white;
+}
+
+.keyboard-key.incorrect:hover {
+  background: var(--color-gray-100);
+  border-color: var(--color-gray-100);
+  color: white;
+}
+
+.keyboard-key.misplaced {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+  color: white;
+}
+
+.keyboard-key.misplaced:hover {
+  background: var(--color-warning-dark);
+  border-color: var(--color-warning-dark);
+  color: white;
 }

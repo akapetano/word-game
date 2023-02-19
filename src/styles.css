@@ -82,7 +82,7 @@ h1 {
   padding: var(--game-spacing) 32px;
   margin: 0 auto;
   min-width: 250px;
-  max-width: min(500px, 58vh, 100%);
+  max-width: min(550px, 58vh, 100%);
 }
 
 .guess-results {
@@ -237,10 +237,9 @@ h1 {
   display: grid;
   justify-items: center;
   align-items: center;
+  place-self: center;
   grid-template-rows: repeat(3, 1fr);
   gap: 4px;
-  margin: 0;
-  padding: 0;
 }
 
 .keyboard-row {
@@ -248,6 +247,7 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 4px;
+  flex-wrap: wrap;
 }
 
 .keyboard-key {
@@ -263,6 +263,12 @@ h1 {
   font-size: 1rem;
   font-weight: bold;
   transition: background-color 0.2s ease-in;
+}
+
+@media (max-width: 600px) {
+  .keyboard-key {
+    padding: 5px 10px;
+  }
 }
 
 .keyboard-key:hover {

@@ -12,7 +12,6 @@ function GuessInput({
   setGameHasEnded,
   setPlayerHasWon,
   setUsedKeys,
-  gameIsResetting,
 }) {
   function handleSubmit(event) {
     event.preventDefault();

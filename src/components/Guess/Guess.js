@@ -1,7 +1,6 @@
 import React from "react";
 
 function Guess({ rowRange, guess }) {
-  console.log(guess);
   return (
     <p className="guess">
       {rowRange.map((row) => {

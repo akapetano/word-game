@@ -42,6 +42,18 @@ button {
   color: inherit;
 }
 
+button.reset-btn {
+  padding: 10px;
+  border: 2px solid var(--color-gray-900);
+  color: var(--color-gray-900);
+  border-radius: 8px;
+}
+
+button.reset-btn:hover {
+  border: 2px solid var(--color-gray-700);
+  color: var(--color-gray-700);
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -164,6 +176,11 @@ h1 {
 }
 
 .banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   position: fixed;
   left: 0;
   right: 0;
@@ -263,6 +280,7 @@ h1 {
   font-size: 1rem;
   font-weight: bold;
   transition: background-color 0.2s ease-in;
+  border: none;
 }
 
 @media (max-width: 600px) {

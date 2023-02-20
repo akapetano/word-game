@@ -1,7 +1,7 @@
 import React from "react";
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
-function EndGameBanner({ playerHasWon, numberOfGuesses, answer }) {
+function EndGameBanner({ playerHasWon, numberOfGuesses, answer, resetGame }) {
   const numOfGuesses = NUM_OF_GUESSES_ALLOWED + 1 - numberOfGuesses;
 
   return (
@@ -21,6 +21,9 @@ function EndGameBanner({ playerHasWon, numberOfGuesses, answer }) {
           Sorry, the correct answer is <strong>{answer}</strong>.
         </p>
       )}
+      <button className="reset-btn" onClick={() => resetGame()}>
+        Reset Game
+      </button>
     </div>
   );
 }

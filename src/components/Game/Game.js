@@ -8,11 +8,10 @@ import GuessResults from "../GuessResults/GuessResults";
 import { useGame } from "../../hooks/useGame";
 import EndGameBanner from "../EndGameBanner/EndGameBanner";
 import Keyboard from "../Keyboard/Keyboard";
+import { useKeyboard } from "../../hooks/useKeyboard";
 
 // Pick a random word on every pageload.
-const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
 
 function Game() {
   const {
@@ -29,9 +28,11 @@ function Game() {
     setGameHasEnded,
     playerHasWon,
     setPlayerHasWon,
+    answer,
     resetGame,
   } = useGame();
-
+  const { usedKeys, setUsedKeys } = useKeyboard();
+  console.info({ answer });
   return (
     <>
       <GuessResults
@@ -50,15 +51,16 @@ function Game() {
         gameHasEnded={gameHasEnded}
         setGameHasEnded={setGameHasEnded}
         setPlayerHasWon={setPlayerHasWon}
-        resetGame={resetGame}
+        setUsedKeys={setUsedKeys}
       />
-      <Keyboard />
+      <Keyboard guess={guess} setGuess={setGuess} usedKeys={usedKeys} />
       {gameHasEnded ? (
         <EndGameBanner
           playerHasWon={playerHasWon}
           numberOfGuesses={numberOfGuesses}
           gameHasEnded={gameHasEnded}
           answer={answer}
+          resetGame={resetGame}
         />
       ) : null}
     </>

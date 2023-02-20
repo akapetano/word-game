@@ -11,7 +11,7 @@ function GuessInput({
   gameHasEnded,
   setGameHasEnded,
   setPlayerHasWon,
-  resetGame,
+  setUsedKeys,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -20,13 +20,20 @@ function GuessInput({
         const nextGuessResult = [...prevState, checkGuess(guess, answer)];
         return nextGuessResult;
       });
+      setUsedKeys((prevState) => {
+        const nextUsedKeys = [...prevState, ...checkGuess(guess, answer)];
+        return nextUsedKeys;
+      });
       setGameHasEnded(true);
       setPlayerHasWon(true);
-      resetGame();
     } else if (guess.length === 5 && guess !== answer) {
       setGuessResults((prevState) => {
         const nextGuessResult = [...prevState, checkGuess(guess, answer)];
         return nextGuessResult;
+      });
+      setUsedKeys((prevState) => {
+        const nextUsedKeys = [...prevState, ...checkGuess(guess, answer)];
+        return nextUsedKeys;
       });
       if (numberOfGuesses >= 2) {
         setNumberOfGuesses((prevState) => {
@@ -36,7 +43,6 @@ function GuessInput({
       } else {
         setGameHasEnded(true);
         setPlayerHasWon(false);
-        resetGame();
       }
       console.log(guess);
     } else {

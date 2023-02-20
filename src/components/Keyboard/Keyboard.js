@@ -1,39 +1,54 @@
 import React from "react";
+import Key from "../Key/Key";
+import { KEYBOARD_KEYS } from "../../constants";
 
-function Keyboard() {
+function Keyboard({ guess, setGuess, usedKeys }) {
   return (
     <div className="keyboard">
       <div className="keyboard-row">
-        <div className="keyboard-key">Q</div>
-        <div className="keyboard-key">W</div>
-        <div className="keyboard-key">E</div>
-        <div className="keyboard-key">R</div>
-        <div className="keyboard-key">T</div>
-        <div className="keyboard-key">Y</div>
-        <div className="keyboard-key">U</div>
-        <div className="keyboard-key">I</div>
-        <div className="keyboard-key">O</div>
-        <div className="keyboard-key">P</div>
+        {KEYBOARD_KEYS[0].map((key) => (
+          <Key
+            key={key.value}
+            value={key.value}
+            guess={usedKeys.find((usedKey) => usedKey.letter === key.label)}
+            onClick={(event) =>
+              setGuess(
+                (prevLetter) => prevLetter + event.target.value.toUpperCase()
+              )
+            }
+            disabled={guess.length === 5}
+          />
+        ))}
       </div>
       <div className="keyboard-row">
-        <div className="keyboard-key">A</div>
-        <div className="keyboard-key">S</div>
-        <div className="keyboard-key">D</div>
-        <div className="keyboard-key">F</div>
-        <div className="keyboard-key">G</div>
-        <div className="keyboard-key">H</div>
-        <div className="keyboard-key">J</div>
-        <div className="keyboard-key">K</div>
-        <div className="keyboard-key">L</div>
+        {KEYBOARD_KEYS[1].map((key) => (
+          <Key
+            key={key.value}
+            value={key.value}
+            guess={usedKeys.find((usedKey) => usedKey.letter === key.label)}
+            onClick={(event) =>
+              setGuess(
+                (prevLetter) => prevLetter + event.target.value.toUpperCase()
+              )
+            }
+            disabled={guess.length === 5}
+          />
+        ))}
       </div>
       <div className="keyboard-row">
-        <div className="keyboard-key">Z</div>
-        <div className="keyboard-key">X</div>
-        <div className="keyboard-key">C</div>
-        <div className="keyboard-key">V</div>
-        <div className="keyboard-key">B</div>
-        <div className="keyboard-key">N</div>
-        <div className="keyboard-key">M</div>
+        {KEYBOARD_KEYS[2].map((key) => (
+          <Key
+            key={key.value}
+            value={key.value}
+            guess={usedKeys.find((usedKey) => usedKey.letter === key.label)}
+            onClick={(event) =>
+              setGuess(
+                (prevLetter) => prevLetter + event.target.value.toUpperCase()
+              )
+            }
+            disabled={guess.length === 5}
+          />
+        ))}
       </div>
     </div>
   );

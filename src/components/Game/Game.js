@@ -27,6 +27,7 @@ function Game() {
     setPlayerHasWon,
     answer,
     resetGame,
+    gameHasReset,
   } = useGame();
   const { usedKeys, setUsedKeys } = useKeyboard();
   console.info({ answer });
@@ -36,6 +37,8 @@ function Game() {
         guessResults={guessResults}
         answer={answer}
         checkGuess={checkGuess}
+        gameHasReset={gameHasReset}
+        gameHasEnded={gameHasEnded}
       />
       <GuessInput
         guess={guess}
@@ -50,7 +53,12 @@ function Game() {
         setPlayerHasWon={setPlayerHasWon}
         setUsedKeys={setUsedKeys}
       />
-      <Keyboard guess={guess} setGuess={setGuess} usedKeys={usedKeys} />
+      <Keyboard
+        guess={guess}
+        setGuess={setGuess}
+        usedKeys={usedKeys}
+        gameHasReset={gameHasReset}
+      />
       {gameHasEnded ? (
         <EndGameBanner
           playerHasWon={playerHasWon}

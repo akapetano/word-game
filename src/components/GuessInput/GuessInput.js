@@ -12,6 +12,7 @@ function GuessInput({
   setGameHasEnded,
   setPlayerHasWon,
   setUsedKeys,
+  gameIsResetting,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -24,6 +25,7 @@ function GuessInput({
         const nextUsedKeys = [...prevState, ...checkGuess(guess, answer)];
         return nextUsedKeys;
       });
+      setGuess("");
       setGameHasEnded(true);
       setPlayerHasWon(true);
     } else if (guess.length === 5 && guess !== answer) {
@@ -35,6 +37,7 @@ function GuessInput({
         const nextUsedKeys = [...prevState, ...checkGuess(guess, answer)];
         return nextUsedKeys;
       });
+      setGuess("");
       if (numberOfGuesses >= 2) {
         setNumberOfGuesses((prevState) => {
           const nextNumberOfGuesses = prevState - 1;
@@ -44,7 +47,6 @@ function GuessInput({
         setGameHasEnded(true);
         setPlayerHasWon(false);
       }
-      console.log(guess);
     } else {
       alert("Your guess must be a 5-letter word.");
     }

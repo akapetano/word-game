@@ -21,7 +21,7 @@ function EndGameBanner({ playerHasWon, numberOfGuesses, answer, resetGame }) {
           Sorry, the correct answer is <strong>{answer}</strong>.
         </p>
       )}
-      <button className="reset-btn" onClick={() => resetGame()}>
+      <button className="reset-btn" onClick={resetGame}>
         Reset Game
       </button>
     </div>

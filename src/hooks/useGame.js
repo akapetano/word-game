@@ -11,6 +11,12 @@ export const useGame = () => {
   const [playerHasWon, setPlayerHasWon] = useState(null);
   const { setGuess, setGuessResults, setNumberOfGuesses } = useGuess();
   const { setUsedKeys } = useKeyboard();
+  const [gameHasReset, setGameHasReset] = useState(false);
+
+  const startGame = () => {
+    setAnswer(sample(WORDS));
+    setGameHasReset((prev) => !prev);
+  };
 
   const resetGame = () => {
     setGuess("");
@@ -18,8 +24,9 @@ export const useGame = () => {
     setUsedKeys([]);
     setNumberOfGuesses(NUM_OF_GUESSES_ALLOWED);
     setPlayerHasWon(null);
-    setGameHasEnded(false);
-    setAnswer(sample(WORDS));
+    setGameHasEnded(null);
+    setGameHasReset(true);
+    startGame();
   };
 
   return {
@@ -28,6 +35,8 @@ export const useGame = () => {
     playerHasWon,
     setPlayerHasWon,
     resetGame,
+    gameHasReset,
+    setGameHasReset,
     answer,
     setAnswer,
   };

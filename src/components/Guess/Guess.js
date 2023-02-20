@@ -7,9 +7,9 @@ function Guess({ rowRange, guess }) {
         return (
           <span
             key={crypto.randomUUID()}
-            className={`cell ${guess ? guess[row].status : ""}`}
+            className={`cell ${guess && guess[row] ? guess[row].status : ""}`}
           >
-            {guess ? guess[row].letter : ""}
+            {guess && guess[row] ? guess[row].letter : ""}
           </span>
         );
       })}

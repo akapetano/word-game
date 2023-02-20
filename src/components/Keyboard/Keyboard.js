@@ -2,7 +2,7 @@ import React from "react";
 import Key from "../Key/Key";
 import { KEYBOARD_KEYS } from "../../constants";
 
-function Keyboard({ guess, setGuess, usedKeys }) {
+function Keyboard({ guess, setGuess, usedKeys, gameHasReset }) {
   return (
     <div className="keyboard">
       <div className="keyboard-row">
@@ -10,7 +10,11 @@ function Keyboard({ guess, setGuess, usedKeys }) {
           <Key
             key={key.value}
             value={key.value}
-            guess={usedKeys.find((usedKey) => usedKey.letter === key.label)}
+            guess={
+              !gameHasReset
+                ? usedKeys.find((usedKey) => usedKey.letter === key.label)
+                : null
+            }
             onClick={(event) =>
               setGuess(
                 (prevLetter) => prevLetter + event.target.value.toUpperCase()
@@ -25,7 +29,11 @@ function Keyboard({ guess, setGuess, usedKeys }) {
           <Key
             key={key.value}
             value={key.value}
-            guess={usedKeys.find((usedKey) => usedKey.letter === key.label)}
+            guess={
+              !gameHasReset
+                ? usedKeys.find((usedKey) => usedKey.letter === key.label)
+                : null
+            }
             onClick={(event) =>
               setGuess(
                 (prevLetter) => prevLetter + event.target.value.toUpperCase()
@@ -40,7 +48,11 @@ function Keyboard({ guess, setGuess, usedKeys }) {
           <Key
             key={key.value}
             value={key.value}
-            guess={usedKeys.find((usedKey) => usedKey.letter === key.label)}
+            guess={
+              !gameHasReset
+                ? usedKeys.find((usedKey) => usedKey.letter === key.label)
+                : null
+            }
             onClick={(event) =>
               setGuess(
                 (prevLetter) => prevLetter + event.target.value.toUpperCase()

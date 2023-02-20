@@ -13,7 +13,6 @@ function EndGameBanner({
   setUsedKeys,
   setPlayerHasWon,
   setGameHasEnded,
-  setGameHasReset,
   setAnswer,
 }) {
   const numOfGuesses = NUM_OF_GUESSES_ALLOWED + 1 - numberOfGuesses;
@@ -25,7 +24,6 @@ function EndGameBanner({
     setNumberOfGuesses(NUM_OF_GUESSES_ALLOWED);
     setPlayerHasWon(null);
     setGameHasEnded(null);
-    setGameHasReset(true);
     setAnswer(sample(WORDS));
   };
 

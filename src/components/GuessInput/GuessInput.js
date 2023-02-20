@@ -47,8 +47,6 @@ function GuessInput({
         setGameHasEnded(true);
         setPlayerHasWon(false);
       }
-    } else {
-      alert("Your guess must be a 5-letter word.");
     }
   }
 
@@ -63,6 +61,8 @@ function GuessInput({
         min={5}
         max={5}
         disabled={gameHasEnded}
+        pattern="[a-zA-Z]{5}"
+        title="5 letter word"
       />
     </form>
   );

@@ -1,7 +1,4 @@
 import React from "react";
-
-import { sample } from "../../utils";
-import { WORDS } from "../../data";
 import useGuess from "../../hooks/useGuess";
 import GuessInput from "../GuessInput/GuessInput";
 import GuessResults from "../GuessResults/GuessResults";

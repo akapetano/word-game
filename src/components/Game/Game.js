@@ -7,9 +7,6 @@ import EndGameBanner from "../EndGameBanner/EndGameBanner";
 import Keyboard from "../Keyboard/Keyboard";
 import { useKeyboard } from "../../hooks/useKeyboard";
 
-// Pick a random word on every pageload.
-// To make debugging easier, we'll log the solution in the console.
-
 function Game() {
   const {
     guess,
@@ -34,11 +31,7 @@ function Game() {
 
   return (
     <>
-      <GuessResults
-        guessResults={guessResults}
-        answer={answer}
-        checkGuess={checkGuess}
-      />
+      <GuessResults guessResults={guessResults} />
       <GuessInput
         guess={guess}
         setGuess={setGuess}

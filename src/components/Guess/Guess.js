@@ -1,9 +1,13 @@
 import React from "react";
+import { range } from "../../utils";
+import { NUM_OF_LETTERS_PER_WORD } from "../../constants";
 
-function Guess({ rowRange, guess }) {
+function Guess({ guess }) {
+  const rows = range(NUM_OF_LETTERS_PER_WORD);
+
   return (
     <p className="guess">
-      {rowRange.map((row) => {
+      {rows.map((row) => {
         return (
           <span
             key={crypto.randomUUID()}
